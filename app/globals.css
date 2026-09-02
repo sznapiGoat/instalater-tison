@@ -28,6 +28,7 @@
 
   body {
     @apply bg-paper text-ink font-sans antialiased;
+    font-variation-settings: "wdth" 100;
     text-rendering: optimizeLegibility;
   }
 

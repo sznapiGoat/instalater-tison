@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Archivo, Source_Sans_3 } from "next/font/google";
+import { Archivo } from "next/font/google";
 
 import { Footer } from "@/components/site/Footer";
 import { Header } from "@/components/site/Header";
@@ -7,16 +7,14 @@ import { StickyCallBar } from "@/components/site/StickyCallBar";
 import { site } from "@/lib/site";
 import "./globals.css";
 
-const display = Archivo({
+/**
+ * Jedna rodina ve dvou šířkách: nadpisy rozšířené (wdth ~110), text základní.
+ * Ušetří to dva soubory písma proti klasické dvojici display + text.
+ */
+const archivo = Archivo({
   subsets: ["latin", "latin-ext"],
   axes: ["wdth"],
-  variable: "--font-display",
-  display: "swap",
-});
-
-const text = Source_Sans_3({
-  subsets: ["latin", "latin-ext"],
-  variable: "--font-text",
+  variable: "--font-sans",
   display: "swap",
 });
 
@@ -64,7 +62,7 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="cs" className={`${display.variable} ${text.variable}`}>
+    <html lang="cs" className={archivo.variable}>
       <body>
         <a
           href="#obsah"

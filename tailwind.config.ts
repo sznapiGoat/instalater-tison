@@ -25,8 +25,8 @@ const config: Config = {
         gold: "#E8B22C",
       },
       fontFamily: {
-        display: ["var(--font-display)", "system-ui", "sans-serif"],
-        sans: ["var(--font-text)", "system-ui", "sans-serif"],
+        display: ["var(--font-sans)", "system-ui", "sans-serif"],
+        sans: ["var(--font-sans)", "system-ui", "sans-serif"],
       },
       maxWidth: {
         shell: "76rem",
