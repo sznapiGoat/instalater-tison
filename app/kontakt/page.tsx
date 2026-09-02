@@ -6,7 +6,6 @@ import { Breadcrumbs } from "@/components/site/Breadcrumbs";
 import { JsonLd, breadcrumbSchema, localBusinessSchema } from "@/components/site/JsonLd";
 import { ProcessSteps } from "@/components/site/ProcessSteps";
 import { Reveal } from "@/components/site/Reveal";
-import { VanDetail } from "@/components/site/VanDetail";
 import { services } from "@/lib/services";
 import { areaServed, site } from "@/lib/site";
 
@@ -177,14 +176,6 @@ export default function ContactPage() {
           </div>
         </div>
 
-        <div className="shell mt-16">
-          <VanDetail
-            focus="57.5% 52%"
-            alt="Detail polepu na boku dodávky s červeným nápisem mobil: 723 304 631 a oválným logem instalatér Tisoň topenář"
-            caption="Stejné číslo, jaké vozíme na dodávce. Když ji potkáte v okolí Hrušovan, voláte na správné místo."
-            accent="#D2172E"
-          />
-        </div>
       </section>
 
       <ProcessSteps />

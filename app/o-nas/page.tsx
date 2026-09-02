@@ -1,13 +1,14 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 
 import { Breadcrumbs } from "@/components/site/Breadcrumbs";
 import { CTASection } from "@/components/site/CTASection";
 import { JsonLd, breadcrumbSchema } from "@/components/site/JsonLd";
+import { PhotoGrid } from "@/components/site/PhotoGrid";
 import { ProcessSteps } from "@/components/site/ProcessSteps";
 import { Reveal } from "@/components/site/Reveal";
 import { TrustSection } from "@/components/site/TrustSection";
+import { photos } from "@/lib/photos";
 import { services } from "@/lib/services";
 import { areaServed, site } from "@/lib/site";
 
@@ -25,6 +26,13 @@ export const metadata: Metadata = {
     images: ["/img/van.jpg"],
   },
 };
+
+/** Průřez obory, schválně jiné kusy než na domovské stránce. */
+const odRuky = [
+  { ...photos.podlahovkaChodba, accent: "#E2621B" },
+  { ...photos.drazkaRozvody, accent: "#1E7FC2" },
+  { ...photos.geberitDvojice, accent: "#103A66" },
+];
 
 const whyUs = [
   {
@@ -82,24 +90,10 @@ export default function AboutPage() {
 
       <section className="py-16 sm:py-20">
         <div className="shell">
-          <Reveal>
-            <figure>
-              <div className="relative aspect-[16/9] w-full overflow-hidden bg-mist sm:aspect-[21/9]">
-                <Image
-                  src="/img/van.jpg"
-                  alt="Bílá dodávka s modro-červeným polepem VODA, TOPENÍ, PLYN, pod ním nápis čištění kanalizací - inspekce kamerou, telefon 723 304 631 a oválné logo instalatér Tisoň topenář, Hrušovany nad Jevišovkou"
-                  fill
-                  sizes="(max-width: 1216px) 100vw, 1216px"
-                  className="object-cover object-[58%_60%]"
-                />
-              </div>
-              <figcaption className="mt-4 max-w-2xl text-sm leading-relaxed text-steel">
-                Dodávka, kterou v okolí Hrušovan potkáte nejčastěji. Polep říká
-                všechno podstatné: voda, topení, plyn, čištění kanalizací a
-                inspekce kamerou.
-              </figcaption>
-            </figure>
+          <Reveal className="max-w-2xl">
+            <h2 className="display-lg">Co po nás zůstane</h2>
           </Reveal>
+          <PhotoGrid items={odRuky} accent="#103A66" className="mt-10" />
         </div>
       </section>
 
