@@ -69,21 +69,21 @@ export function ServicePageTemplate({ service }: { service: Service }) {
             </h2>
           </Reveal>
 
-          <dl className="mt-12 grid gap-px border border-line bg-line md:grid-cols-3">
+          <ul className="mt-12 grid gap-px border border-line bg-line md:grid-cols-3">
             {service.items.map((item, i) => (
-              <Reveal key={item.name} delay={i * 0.08} className="bg-paper">
-                <div className="h-full p-7 sm:p-8">
+              <li key={item.name} className="bg-paper">
+                <Reveal delay={i * 0.08} className="h-full p-7 sm:p-8">
                   <span
                     aria-hidden
                     className="block h-[3px] w-10"
                     style={{ background: service.accent }}
                   />
-                  <dt className="display-md mt-5">{item.name}</dt>
-                  <dd className="mt-3 text-[0.98rem] leading-relaxed text-steel">{item.desc}</dd>
-                </div>
-              </Reveal>
+                  <h3 className="display-md mt-5">{item.name}</h3>
+                  <p className="mt-3 text-[0.98rem] leading-relaxed text-steel">{item.desc}</p>
+                </Reveal>
+              </li>
             ))}
-          </dl>
+          </ul>
         </div>
       </section>
 
