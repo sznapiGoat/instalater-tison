@@ -3,8 +3,8 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
-import { Menu, Phone, X } from "lucide-react";
-import { useEffect, useState } from "react";
+import { ChevronDown, Menu, Phone, X } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
 
 import { services } from "@/lib/services";
 import { site } from "@/lib/site";
@@ -18,9 +18,31 @@ const primary = [
 export function Header() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
+  const [servicesOpen, setServicesOpen] = useState(false);
+  const servicesRef = useRef<HTMLDivElement>(null);
   const [scrolled, setScrolled] = useState(false);
 
-  useEffect(() => setOpen(false), [pathname]);
+  useEffect(() => {
+    setOpen(false);
+    setServicesOpen(false);
+  }, [pathname]);
+
+  // Rozbalené služby zavře Escape i klik mimo, ať se nepletou do stránky.
+  useEffect(() => {
+    if (!servicesOpen) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setServicesOpen(false);
+    };
+    const onPointer = (e: MouseEvent) => {
+      if (!servicesRef.current?.contains(e.target as Node)) setServicesOpen(false);
+    };
+    document.addEventListener("keydown", onKey);
+    document.addEventListener("mousedown", onPointer);
+    return () => {
+      document.removeEventListener("keydown", onKey);
+      document.removeEventListener("mousedown", onPointer);
+    };
+  }, [servicesOpen]);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
@@ -69,41 +91,85 @@ export function Header() {
             </Link>
 
             <nav aria-label="Hlavní" className="hidden items-center gap-1 lg:flex">
-              <div className="group relative">
-                <Link
-                  href="/#sluzby"
+              <div
+                ref={servicesRef}
+                className="relative"
+                onMouseEnter={() => setServicesOpen(true)}
+                onMouseLeave={() => setServicesOpen(false)}
+              >
+                <button
+                  type="button"
+                  aria-expanded={servicesOpen}
+                  aria-haspopup="true"
+                  // Hover panel otevře už při najetí, klik ho proto jen otvírá,
+                  // jinak by ho druhá půlka gesta myší hned zavřela.
+                  onClick={() => setServicesOpen(true)}
+                  onFocus={() => setServicesOpen(true)}
                   className={cn(
-                    "flex h-10 items-center rounded-sm px-3 text-[0.95rem] font-medium text-graphite transition-colors hover:text-navy",
-                    isService && "text-navy"
+                    "flex h-10 items-center gap-1.5 rounded-sm px-3 text-[0.95rem] font-medium text-graphite transition-colors hover:text-navy",
+                    (isService || servicesOpen) && "text-navy"
                   )}
                 >
                   Služby
-                </Link>
-                <div className="invisible absolute left-1/2 top-full w-[30rem] -translate-x-1/2 pt-2 opacity-0 transition-all duration-200 group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
-                  <div className="grid grid-cols-2 gap-1 border border-line bg-paper p-2 shadow-lift">
-                    {services.map((s) => (
-                      <Link
-                        key={s.slug}
-                        href={`/${s.slug}`}
-                        className="flex items-start gap-3 rounded-sm px-3 py-2.5 transition-colors hover:bg-mist"
+                  <span
+                    aria-hidden
+                    className="flex h-5 min-w-5 items-center justify-center rounded-full bg-mist px-1 font-display text-[0.7rem] font-bold text-navy"
+                  >
+                    {services.length}
+                  </span>
+                  <ChevronDown
+                    aria-hidden
+                    className={cn(
+                      "h-4 w-4 transition-transform duration-200",
+                      servicesOpen && "rotate-180"
+                    )}
+                  />
+                </button>
+
+                <AnimatePresence>
+                  {servicesOpen && (
+                    // Vystředění drží obal, motion.div si transform přepisuje sám.
+                    <div className="absolute left-1/2 top-full w-[32rem] -translate-x-1/2 pt-2">
+                      <motion.div
+                        initial={{ opacity: 0, y: -6 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -6 }}
+                        transition={{ duration: 0.18, ease: [0.22, 0.61, 0.36, 1] }}
+                        className="border border-line bg-paper shadow-lift"
                       >
-                        <span
-                          aria-hidden
-                          className="mt-1.5 h-2.5 w-2.5 shrink-0 rounded-full"
-                          style={{ background: s.accent }}
-                        />
-                        <span>
-                          <span className="block font-display text-[0.95rem] font-semibold text-ink">
-                            {s.name}
-                          </span>
-                          <span className="block text-[0.8rem] leading-snug text-steel">
-                            {s.teaser}
-                          </span>
-                        </span>
-                      </Link>
-                    ))}
-                  </div>
-                </div>
+                        <p className="rule-label border-b border-line px-4 py-2.5">
+                          Šest oborů, každý má svou stránku
+                        </p>
+                        <div className="grid grid-cols-2 gap-1 p-2">
+                          {services.map((s) => (
+                            <Link
+                              key={s.slug}
+                              href={`/${s.slug}`}
+                              className={cn(
+                                "flex items-start gap-3 rounded-sm px-3 py-2.5 transition-colors hover:bg-mist",
+                                pathname === `/${s.slug}` && "bg-mist"
+                              )}
+                            >
+                              <span
+                                aria-hidden
+                                className="mt-1.5 h-2.5 w-2.5 shrink-0 rounded-full"
+                                style={{ background: s.accent }}
+                              />
+                              <span>
+                                <span className="block font-display text-[0.95rem] font-semibold text-ink">
+                                  {s.name}
+                                </span>
+                                <span className="block text-[0.8rem] leading-snug text-steel">
+                                  {s.teaser}
+                                </span>
+                              </span>
+                            </Link>
+                          ))}
+                        </div>
+                      </motion.div>
+                    </div>
+                  )}
+                </AnimatePresence>
               </div>
 
               {primary.map((l) => (
@@ -158,7 +224,7 @@ export function Header() {
             className="fixed inset-0 top-[75px] z-40 overflow-y-auto bg-paper lg:hidden"
           >
             <nav aria-label="Mobilní" className="shell py-6">
-              <p className="rule-label mb-3">Služby</p>
+              <p className="rule-label mb-3">Služby, šest samostatných stránek</p>
               <ul className="mb-8 divide-y divide-line border-y border-line">
                 {services.map((s, i) => (
                   <motion.li
