@@ -5,6 +5,7 @@ import { Breadcrumbs } from "@/components/site/Breadcrumbs";
 import { CTASection } from "@/components/site/CTASection";
 import { Reveal } from "@/components/site/Reveal";
 import { ServiceHeaderIcon } from "@/components/site/ServiceHeaderIcon";
+import { VanDetail } from "@/components/site/VanDetail";
 import { getService, type Service } from "@/lib/services";
 import { site } from "@/lib/site";
 
@@ -83,6 +84,15 @@ export function ServicePageTemplate({ service }: { service: Service }) {
               </li>
             ))}
           </ul>
+
+          <div className="mt-16">
+            <VanDetail
+              focus={service.photo.focus}
+              alt={service.photo.alt}
+              caption={service.photo.caption}
+              accent={service.accent}
+            />
+          </div>
         </div>
       </section>
 

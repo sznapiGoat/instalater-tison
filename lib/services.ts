@@ -19,6 +19,8 @@ export type Service = {
   accent: string;
   /** Světlejší varianta akcentu pro tmavé pozadí. */
   accentOnDark: string;
+  /** Výřez fotky polepu (transform-origin) a jeho popisek. */
+  photo: { focus: string; alt: string; caption: string };
   icon: IconKey;
   items: { name: string; desc: string }[];
   whenToCall: string;
@@ -38,6 +40,12 @@ export const services: Service[] = [
       "Topení děláme od návrhu otopné soustavy až po napuštění a zatopení. V Hrušovanech nad Jevišovkou a širokém okolí montujeme podlahové vytápění, připojujeme krbová kamna a instalujeme solární systémy pro ohřev vody. Vzdálenější zakázky bereme po domluvě.",
     accent: "#E2621B",
     accentOnDark: "#F0813C",
+    photo: {
+      focus: "47% 38.5%",
+      alt: "Detail polepu na boku dodávky Miroslava Tisoně: nápis TOPENÍ červeně na fotce plamenů, vedle něj ikona plamínku.",
+      caption:
+        "Prostřední pole polepu patří topení. Plameny na dodávce nejsou dekorace, je to jedna ze tří hlavních větví, které vozíme na každou zakázku.",
+    },
     icon: "topeni",
     items: [
       {
@@ -70,6 +78,12 @@ export const services: Service[] = [
       "Vodu vedeme od přípojky až k poslední baterii. Děláme nové rozvody i výměny starých, zapojujeme domácí vodárny a řešíme využití dešťové vody na zalévání a splachování. Pracujeme v Hrušovanech nad Jevišovkou a širokém okolí.",
     accent: "#1E7FC2",
     accentOnDark: "#4FA8E8",
+    photo: {
+      focus: "27% 38.5%",
+      alt: "Detail polepu na boku dodávky Miroslava Tisoně: nápis VODA tmavě modře na fotce vodní hladiny, vedle něj ikona modré kapky.",
+      caption:
+        "Levé pole polepu patří vodě. Rozvody, vodárny i dešťovka končí u téhle jedné dodávky.",
+    },
     icon: "voda",
     items: [
       {
@@ -102,6 +116,12 @@ export const services: Service[] = [
       "Plynové rozvody vedeme v celém domě i v dílně a připojujeme na ně spotřebiče. Máme možnost autogenu, takže si poradíme i tam, kde je potřeba pálit nebo svařovat přímo na místě. Působíme v Hrušovanech nad Jevišovkou a širokém okolí.",
     accent: "#D2172E",
     accentOnDark: "#F0455A",
+    photo: {
+      focus: "62% 38.5%",
+      alt: "Detail polepu na boku dodávky Miroslava Tisoně: nápis PLYN tmavě modře s ikonou modrého plamínku, vpravo kabina vozu.",
+      caption:
+        "Pravé pole polepu patří plynu. Rozvody i připojení spotřebičů, včetně možnosti autogenu.",
+    },
     icon: "plyn",
     items: [
       {
@@ -133,6 +153,12 @@ export const services: Service[] = [
       "Kanalizaci řešíme celou, od svodů v domě po přípojku na řad. Uvnitř stavíme rozvody z HT trub, venku z KG potrubí, a spády navrhujeme tak, aby se odpad nikde nezdržoval. Působíme v Hrušovanech nad Jevišovkou a širokém okolí.",
     accent: "#103A66",
     accentOnDark: "#4E8FD1",
+    photo: {
+      focus: "47% 55%",
+      alt: "Detail polepu na boku dodávky Miroslava Tisoně: řádek čištění kanalizací - inspekce kamerou, pod ním telefon 723 304 631 a oválné logo instalatér Tisoň topenář.",
+      caption:
+        "Pod hlavním polepem je řádek, který na dodávce vozíme kvůli kanalizaci. Přípojky, HT rozvody i KG potrubí v zemi.",
+    },
     icon: "kanalizace",
     items: [
       {
@@ -165,6 +191,12 @@ export const services: Service[] = [
       "Než se začne kopat, je lepší se do potrubí podívat. Kamerou projedeme trasu, ukážeme vám, co je uvnitř, a lokátorem najdeme přesné místo poruchy, aby výkop nebyl větší, než musí být. Ze záznamu vám můžeme udělat kopii na USB.",
     accent: "#33414E",
     accentOnDark: "#9FB2C2",
+    photo: {
+      focus: "53% 50%",
+      alt: "Detail polepu na boku dodávky Miroslava Tisoně: detail slov inspekce kamerou z řádku čištění kanalizací - inspekce kamerou.",
+      caption:
+        "Inspekce kamerou má na dodávce vlastní řádek. Kamera i lokátor jezdí s námi, nemusíte je nikde shánět.",
+    },
     icon: "inspekce",
     items: [
       {
@@ -197,6 +229,12 @@ export const services: Service[] = [
       "Ucpaný odpad čistíme strojně do vzdálenosti 22 metrů. Podle průměru potrubí nasadíme malou nebo velkou pružinu, na mastnotu a nánosy použijeme tlakovou trysku. Jezdíme do Hrušovan nad Jevišovkou a širokého okolí.",
     accent: "#0E8A82",
     accentOnDark: "#2CC0B5",
+    photo: {
+      focus: "34% 52%",
+      alt: "Detail polepu na boku dodávky Miroslava Tisoně: detail slov čištění kanalizací, nad nimi spodní část polepu s plameny a vodní hladinou.",
+      caption:
+        "Čištění kanalizace je na dodávce hned pod hlavním polepem. Stroj, pružiny i tlaková tryska jsou součástí výbavy.",
+    },
     icon: "cisteni",
     items: [
       {
