@@ -17,6 +17,8 @@ export type Service = {
   metaDescription: string;
   intro: string;
   accent: string;
+  /** Světlejší varianta akcentu pro tmavé pozadí. */
+  accentOnDark: string;
   icon: IconKey;
   items: { name: string; desc: string }[];
   whenToCall: string;
@@ -35,6 +37,7 @@ export const services: Service[] = [
     intro:
       "Topení děláme od návrhu otopné soustavy až po napuštění a zatopení. V Hrušovanech nad Jevišovkou a širokém okolí montujeme podlahové vytápění, připojujeme krbová kamna a instalujeme solární systémy pro ohřev vody. Vzdálenější zakázky bereme po domluvě.",
     accent: "#E2621B",
+    accentOnDark: "#F0813C",
     icon: "topeni",
     items: [
       {
@@ -66,6 +69,7 @@ export const services: Service[] = [
     intro:
       "Vodu vedeme od přípojky až k poslední baterii. Děláme nové rozvody i výměny starých, zapojujeme domácí vodárny a řešíme využití dešťové vody na zalévání a splachování. Pracujeme v Hrušovanech nad Jevišovkou a širokém okolí.",
     accent: "#1E7FC2",
+    accentOnDark: "#4FA8E8",
     icon: "voda",
     items: [
       {
@@ -97,6 +101,7 @@ export const services: Service[] = [
     intro:
       "Plynové rozvody vedeme v celém domě i v dílně a připojujeme na ně spotřebiče. Máme možnost autogenu, takže si poradíme i tam, kde je potřeba pálit nebo svařovat přímo na místě. Působíme v Hrušovanech nad Jevišovkou a širokém okolí.",
     accent: "#D2172E",
+    accentOnDark: "#F0455A",
     icon: "plyn",
     items: [
       {
@@ -127,6 +132,7 @@ export const services: Service[] = [
     intro:
       "Kanalizaci řešíme celou, od svodů v domě po přípojku na řad. Uvnitř stavíme rozvody z HT trub, venku z KG potrubí, a spády navrhujeme tak, aby se odpad nikde nezdržoval. Působíme v Hrušovanech nad Jevišovkou a širokém okolí.",
     accent: "#103A66",
+    accentOnDark: "#4E8FD1",
     icon: "kanalizace",
     items: [
       {
@@ -158,6 +164,7 @@ export const services: Service[] = [
     intro:
       "Než se začne kopat, je lepší se do potrubí podívat. Kamerou projedeme trasu, ukážeme vám, co je uvnitř, a lokátorem najdeme přesné místo poruchy, aby výkop nebyl větší, než musí být. Ze záznamu vám můžeme udělat kopii na USB.",
     accent: "#33414E",
+    accentOnDark: "#9FB2C2",
     icon: "inspekce",
     items: [
       {
@@ -189,6 +196,7 @@ export const services: Service[] = [
     intro:
       "Ucpaný odpad čistíme strojně do vzdálenosti 22 metrů. Podle průměru potrubí nasadíme malou nebo velkou pružinu, na mastnotu a nánosy použijeme tlakovou trysku. Jezdíme do Hrušovan nad Jevišovkou a širokého okolí.",
     accent: "#0E8A82",
+    accentOnDark: "#2CC0B5",
     icon: "cisteni",
     items: [
       {

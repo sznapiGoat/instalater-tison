@@ -20,7 +20,7 @@ export function ServicePageTemplate({ service }: { service: Service }) {
         <div
           className="absolute inset-0"
           style={{
-            background: `radial-gradient(85% 75% at 78% 12%, ${service.accent}38, transparent 62%)`,
+            background: `radial-gradient(85% 75% at 78% 12%, ${service.accentOnDark}33, transparent 62%)`,
           }}
           aria-hidden
         />
@@ -33,7 +33,7 @@ export function ServicePageTemplate({ service }: { service: Service }) {
           />
 
           <div className="mt-8">
-            <ServiceHeaderIcon icon={service.icon} accent={service.accent} />
+            <ServiceHeaderIcon icon={service.icon} accent={service.accentOnDark} />
           </div>
 
           <h1 className="display-xl mt-7 max-w-3xl text-white">{service.h1}</h1>
@@ -44,8 +44,7 @@ export function ServicePageTemplate({ service }: { service: Service }) {
           <div className="mt-9 flex flex-wrap items-center gap-3">
             <a
               href={site.phoneHref}
-              className="inline-flex h-[3.25rem] items-center gap-2.5 px-7 font-display font-semibold text-white transition-opacity hover:opacity-90"
-              style={{ background: service.accent }}
+              className="inline-flex h-[3.25rem] items-center gap-2.5 bg-signal px-7 font-display font-semibold text-white transition-colors hover:bg-[#B81126]"
             >
               <Phone className="h-[1.05rem] w-[1.05rem]" strokeWidth={2.4} />
               {site.phoneDisplay}
