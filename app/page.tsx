@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import { CTASection } from "@/components/site/CTASection";
 import { Hero } from "@/components/site/Hero";
 import { JsonLd, breadcrumbSchema, localBusinessSchema } from "@/components/site/JsonLd";
-import { PhotoMasonry } from "@/components/site/PhotoMasonry";
+import { PhotoGrid } from "@/components/site/PhotoGrid";
 import { ProcessSteps } from "@/components/site/ProcessSteps";
 import { Reveal } from "@/components/site/Reveal";
 import { ServiceCard } from "@/components/site/ServiceCard";
@@ -19,7 +19,6 @@ export const metadata: Metadata = {
   alternates: { canonical: "/" },
 };
 
-/** Střídáme na výšku a na šířku, ať se sloupce vyrovnají. */
 const showcase = [
   { ...photos.plynomery, accent: "#D2172E" },
   { ...photos.rozdelovacPodlahovka, accent: "#E2621B" },
@@ -77,7 +76,7 @@ export default function HomePage() {
             </Reveal>
           </div>
 
-          <PhotoMasonry items={showcase} accent="#103A66" className="mt-12" />
+          <PhotoGrid items={showcase} accent="#103A66" className="mt-12" />
         </div>
       </section>
 

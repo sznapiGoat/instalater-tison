@@ -49,12 +49,12 @@ export const services: Service[] = [
         "Prostřední pole polepu patří topení. Plameny na dodávce nejsou dekorace, je to jedna ze tří hlavních větví, které vozíme na každou zakázku.",
     },
     gallery: [
-      "podlahovkaChodba",
       "rozdelovacPodlahovka",
-      "krbovaKamna",
       "systemovaDeska",
-      "kotelnaCerpadlo",
+      "podlahovkaChodba",
+      "krbovaKamna",
       "radiatorRozvody",
+      "kotelnaCerpadlo",
     ],
     icon: "topeni",
     items: [
@@ -95,10 +95,10 @@ export const services: Service[] = [
         "Levé pole polepu patří vodě. Rozvody, vodárny i dešťovka končí u téhle jedné dodávky.",
     },
     gallery: [
-      "koupelnaHruba",
       "drazkaRozvody",
-      "koupelnaHotova",
+      "koupelnaHruba",
       "modulUOkna",
+      "koupelnaHotova",
     ],
     icon: "voda",
     items: [
@@ -181,8 +181,8 @@ export const services: Service[] = [
     },
     gallery: [
       "pripojkaVykop",
-      "geberitDvojice",
       "kgVeVykopu",
+      "geberitDvojice",
     ],
     icon: "kanalizace",
     items: [

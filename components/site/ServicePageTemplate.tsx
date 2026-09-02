@@ -5,7 +5,7 @@ import { Breadcrumbs } from "@/components/site/Breadcrumbs";
 import { CTASection } from "@/components/site/CTASection";
 import { Reveal } from "@/components/site/Reveal";
 import { ServiceHeaderIcon } from "@/components/site/ServiceHeaderIcon";
-import { PhotoMasonry } from "@/components/site/PhotoMasonry";
+import { PhotoGrid } from "@/components/site/PhotoGrid";
 import { VanDetail } from "@/components/site/VanDetail";
 import { getPhotos } from "@/lib/photos";
 import { getService, type Service } from "@/lib/services";
@@ -99,7 +99,7 @@ export function ServicePageTemplate({ service }: { service: Service }) {
           </Reveal>
 
           {gallery.length > 0 ? (
-            <PhotoMasonry items={gallery} accent={service.accent} className="mt-10" />
+            <PhotoGrid items={gallery} accent={service.accent} className="mt-10" />
           ) : (
             <div className="mt-10">
               <VanDetail

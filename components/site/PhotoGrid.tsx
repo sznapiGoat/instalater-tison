@@ -4,10 +4,10 @@ import { Reveal } from "@/components/site/Reveal";
 import type { Photo } from "@/lib/photos";
 
 /**
- * Zdrojové fotky mají kolem 400 px na šířku, proto sázíme do sloupců
- * s dlaždicí do zhruba 390 px a nikde je nezvětšujeme přes originál.
+ * Zdrojové fotky mají kolem 400 px na šířku, proto držíme dlaždici do zhruba
+ * 390 px. Všechny mají stejný poměr 4:3, výřez řídí object-position u fotky.
  */
-export function PhotoMasonry({
+export function PhotoGrid({
   items,
   accent,
   className,
@@ -18,17 +18,14 @@ export function PhotoMasonry({
 }) {
   return (
     <div
-      className={`columns-1 gap-5 sm:columns-2 ${
-        items.length > 2 ? "lg:columns-3" : "max-w-3xl"
+      className={`grid gap-5 sm:grid-cols-2 ${
+        items.length > 2 ? "lg:grid-cols-3" : "max-w-3xl"
       } ${className ?? ""}`}
     >
       {items.map((p, i) => (
-        <Reveal key={p.src} delay={(i % 3) * 0.07} className="mb-5 break-inside-avoid">
+        <Reveal key={p.src} delay={(i % 3) * 0.07}>
           <figure>
-            <div
-              className="relative w-full overflow-hidden border border-line bg-mist"
-              style={{ aspectRatio: p.ratio }}
-            >
+            <div className="relative aspect-[4/3] w-full overflow-hidden border border-line bg-mist">
               <Image
                 src={p.src}
                 alt={p.alt}
