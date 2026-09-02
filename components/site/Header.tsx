@@ -48,7 +48,7 @@ export function Header() {
       >
         <div className={cn("bg-paper/90 backdrop-blur-md transition-colors", !scrolled && "bg-paper")}>
           <div className="shell flex h-[72px] items-center justify-between gap-4">
-            <Link href="/" className="flex items-center gap-3" aria-label={`${site.name}, domů`}>
+            <Link href="/" className="flex items-center gap-3">
               <span
                 aria-hidden
                 className="flex h-10 w-10 flex-col justify-center gap-[3px] bg-navy-deep px-2"
@@ -65,7 +65,7 @@ export function Header() {
                   instalatér · topenář
                 </span>
               </span>
-              <span className="sr-only">{site.name}</span>
+              <span className="sr-only">Tisoň Instalatér-Topenář, domů</span>
             </Link>
 
             <nav aria-label="Hlavní" className="hidden items-center gap-1 lg:flex">
