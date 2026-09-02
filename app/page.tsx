@@ -3,10 +3,12 @@ import type { Metadata } from "next";
 import { CTASection } from "@/components/site/CTASection";
 import { Hero } from "@/components/site/Hero";
 import { JsonLd, breadcrumbSchema, localBusinessSchema } from "@/components/site/JsonLd";
+import { PhotoMasonry } from "@/components/site/PhotoMasonry";
 import { ProcessSteps } from "@/components/site/ProcessSteps";
 import { Reveal } from "@/components/site/Reveal";
 import { ServiceCard } from "@/components/site/ServiceCard";
 import { TrustSection } from "@/components/site/TrustSection";
+import { photos } from "@/lib/photos";
 import { services } from "@/lib/services";
 import { site } from "@/lib/site";
 
@@ -16,6 +18,16 @@ export const metadata: Metadata = {
     "Instalatér a topenář v Hrušovanech nad Jevišovkou a širokém okolí. Voda, topení, plyn, kanalizace, inspekce potrubí kamerou a strojní čištění odpadů do 22 metrů. Firma s dvacetiletou tradicí.",
   alternates: { canonical: "/" },
 };
+
+/** Střídáme na výšku a na šířku, ať se sloupce vyrovnají. */
+const showcase = [
+  { ...photos.plynomery, accent: "#D2172E" },
+  { ...photos.rozdelovacPodlahovka, accent: "#E2621B" },
+  { ...photos.krbovaKamna, accent: "#E2621B" },
+  { ...photos.koupelnaHotova, accent: "#1E7FC2" },
+  { ...photos.pripojkaVykop, accent: "#103A66" },
+  { ...photos.kgVeVykopu, accent: "#103A66" },
+];
 
 export default function HomePage() {
   return (
@@ -46,6 +58,26 @@ export default function HomePage() {
               <ServiceCard key={s.slug} service={s} index={i} />
             ))}
           </div>
+        </div>
+      </section>
+
+      <section className="py-20 sm:py-28" aria-labelledby="realizace">
+        <div className="shell">
+          <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+            <Reveal className="max-w-2xl">
+              <h2 id="realizace" className="display-lg">
+                Z vlastních zakázek
+              </h2>
+            </Reveal>
+            <Reveal delay={0.08} className="max-w-md">
+              <p className="lede">
+                Fotky z hotových i rozpracovaných zakázek. Žádné katalogové
+                obrázky, jen to, co jsme sami udělali.
+              </p>
+            </Reveal>
+          </div>
+
+          <PhotoMasonry items={showcase} accent="#103A66" className="mt-12" />
         </div>
       </section>
 

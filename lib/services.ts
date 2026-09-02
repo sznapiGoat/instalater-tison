@@ -21,6 +21,8 @@ export type Service = {
   accentOnDark: string;
   /** Výřez fotky polepu (transform-origin) a jeho popisek. */
   photo: { focus: string; alt: string; caption: string };
+  /** Klíče do lib/photos.ts. Prázdné = obor zatím nemá vlastní fotky. */
+  gallery: string[];
   icon: IconKey;
   items: { name: string; desc: string }[];
   whenToCall: string;
@@ -46,6 +48,14 @@ export const services: Service[] = [
       caption:
         "Prostřední pole polepu patří topení. Plameny na dodávce nejsou dekorace, je to jedna ze tří hlavních větví, které vozíme na každou zakázku.",
     },
+    gallery: [
+      "podlahovkaChodba",
+      "rozdelovacPodlahovka",
+      "krbovaKamna",
+      "systemovaDeska",
+      "kotelnaCerpadlo",
+      "radiatorRozvody",
+    ],
     icon: "topeni",
     items: [
       {
@@ -84,6 +94,12 @@ export const services: Service[] = [
       caption:
         "Levé pole polepu patří vodě. Rozvody, vodárny i dešťovka končí u téhle jedné dodávky.",
     },
+    gallery: [
+      "koupelnaHruba",
+      "drazkaRozvody",
+      "koupelnaHotova",
+      "modulUOkna",
+    ],
     icon: "voda",
     items: [
       {
@@ -122,6 +138,10 @@ export const services: Service[] = [
       caption:
         "Pravé pole polepu patří plynu. Rozvody i připojení spotřebičů, včetně možnosti autogenu.",
     },
+    gallery: [
+      "plynomery",
+      "plynovyKotel",
+    ],
     icon: "plyn",
     items: [
       {
@@ -159,6 +179,11 @@ export const services: Service[] = [
       caption:
         "Pod hlavním polepem je řádek, který na dodávce vozíme kvůli kanalizaci. Přípojky, HT rozvody i KG potrubí v zemi.",
     },
+    gallery: [
+      "pripojkaVykop",
+      "geberitDvojice",
+      "kgVeVykopu",
+    ],
     icon: "kanalizace",
     items: [
       {
@@ -197,6 +222,7 @@ export const services: Service[] = [
       caption:
         "Inspekce kamerou má na dodávce vlastní řádek. Kamera i lokátor jezdí s námi, nemusíte je nikde shánět.",
     },
+    gallery: [],
     icon: "inspekce",
     items: [
       {
@@ -235,6 +261,7 @@ export const services: Service[] = [
       caption:
         "Čištění kanalizace je na dodávce hned pod hlavním polepem. Stroj, pružiny i tlaková tryska jsou součástí výbavy.",
     },
+    gallery: [],
     icon: "cisteni",
     items: [
       {

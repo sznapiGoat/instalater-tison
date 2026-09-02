@@ -5,11 +5,14 @@ import { Breadcrumbs } from "@/components/site/Breadcrumbs";
 import { CTASection } from "@/components/site/CTASection";
 import { Reveal } from "@/components/site/Reveal";
 import { ServiceHeaderIcon } from "@/components/site/ServiceHeaderIcon";
+import { PhotoMasonry } from "@/components/site/PhotoMasonry";
 import { VanDetail } from "@/components/site/VanDetail";
+import { getPhotos } from "@/lib/photos";
 import { getService, type Service } from "@/lib/services";
 import { site } from "@/lib/site";
 
 export function ServicePageTemplate({ service }: { service: Service }) {
+  const gallery = getPhotos(service.gallery);
   const related = service.related
     .map((slug) => getService(slug))
     .filter((s): s is Service => Boolean(s));
@@ -84,15 +87,29 @@ export function ServicePageTemplate({ service }: { service: Service }) {
               </li>
             ))}
           </ul>
+        </div>
+      </section>
 
-          <div className="mt-16">
-            <VanDetail
-              focus={service.photo.focus}
-              alt={service.photo.alt}
-              caption={service.photo.caption}
-              accent={service.accent}
-            />
-          </div>
+      <section className="pb-20 sm:pb-24" aria-labelledby="realizace">
+        <div className="shell">
+          <Reveal>
+            <h2 id="realizace" className="display-lg max-w-2xl">
+              {gallery.length > 0 ? "Z realizací" : "Poznáte nás podle dodávky"}
+            </h2>
+          </Reveal>
+
+          {gallery.length > 0 ? (
+            <PhotoMasonry items={gallery} accent={service.accent} className="mt-10" />
+          ) : (
+            <div className="mt-10">
+              <VanDetail
+                focus={service.photo.focus}
+                alt={service.photo.alt}
+                caption={service.photo.caption}
+                accent={service.accent}
+              />
+            </div>
+          )}
         </div>
       </section>
 
